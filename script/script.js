@@ -49,10 +49,11 @@ const displayVideo = (videos) => {
         videoCard.classList = 'card bg-base-100'
         videoCard.innerHTML = 
         `
-            <figure class= "h-[200px]">
+            <figure class= "h-[200px] relative">
                 <img
                 src= ${video.thumbnail}
                 alt="Shoes" class= "h-full w-full object-cover" />
+                <span class="absolute right-2 bottom-2 bg-slate-950 text-white p-1 rounded-lg">${video.others.posted_date}</span>
             </figure>
             <div class="flex gap-2 py-3">
                 <div>
@@ -62,7 +63,8 @@ const displayVideo = (videos) => {
                     <h2 class="font-bold">${video.title}</h2>
                     <div class="flex gap-2 items-center">
                         <p class="text-gray-500">${video.authors[0].profile_name}</P>
-                        <img src="https://img.icons8.com/?size=40&id=41816&format=png" class="w-4 h-4"/>
+                        ${video.authors[0].verified === true ? `<img src="https://img.icons8.com/?size=40&id=41816&format=png" class="w-4 h-4"/>` : ""}
+                        
                     </div>
                     <p>${video.others.views}</p>
                 </div>
